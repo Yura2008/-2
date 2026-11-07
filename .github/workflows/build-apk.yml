@@ -15,7 +15,7 @@ jobs:
       - name: Verify and restore approved source
         shell: bash
         run: |
-          echo '89c49b0115f1a2766c1c8db68aa2b79514d330087602d62cc7dd9a24fb13c72b  payload/healther-source.tar.xz' | sha256sum --check --status
+          echo '81bcae6a98c0cc3cad86772612103b32a814dc8d5bfb41bed00de5db87460142  payload/healther-source.tar.xz' | sha256sum --check --status
           tar -xJf payload/healther-source.tar.xz --strip-components=1
           test -f app/src/main/assets/screens/07_dashboard.html
           test -f app/src/main/assets/screens/dark_07_dashboard.html
@@ -29,11 +29,11 @@ jobs:
           echo "Android SDK location: $ANDROID_HOME"
           SDKMANAGER=$(find "$ANDROID_HOME/cmdline-tools" -type f -name sdkmanager -print -quit)
           test -x "$SDKMANAGER"
-          "$SDKMANAGER" --install 'platforms;android-35' 'build-tools;35.0.0'
-      - name: Install Gradle 8.10.2
+          "$SDKMANAGER" --install 'platforms;android-36' 'build-tools;35.0.0'
+      - name: Install Gradle 8.11.1
         uses: gradle/actions/setup-gradle@v4
         with:
-          gradle-version: '8.10.2'
+          gradle-version: '8.11.1'
       - name: Check locked screens and JavaScript
         run: |
           python3 scripts/preflight.py
